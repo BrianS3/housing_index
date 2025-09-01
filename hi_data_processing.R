@@ -35,4 +35,4 @@ names(asset_obj_list) <- tools::file_path_sans_ext(basename(assets))
 combined_df <- bind_rows(asset_obj_list, .id = "metric") 
 combined_df <- combined_df |> filter(!is.na(zhvi))
 
-saveRDS(combined_df, "assets/housing_index_data.RDS")
+saveRDS(combined_df, "housing_index_data.RDS")
