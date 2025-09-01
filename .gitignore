@@ -1,0 +1,51 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+*.Rproj
+
+# Produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# Cache files for knitr
+*_cache/
+cache/
+
+# Temporary files created by RStudio
+.Rproj.user/
+
+# Shiny app local files
+rsconnect/
+
+# Mac specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Personal config
+.Rprofile
+Renviron
+
+# Ignore assets folder
+assets/
