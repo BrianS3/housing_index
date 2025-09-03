@@ -4,17 +4,17 @@ library(shinydashboard)
 library(glue)
 library(tidyr)
 library(dplyr)
+library(scales)
+library(ggplot2)
+library(plotly)
 
-# set directory (change this one line when needed)
-asset_directory <- "data_2025_09"
-asset_path <- file.path("assets", asset_directory)
-assets <- list.files(asset_path, full.names = TRUE)
+housing_index_df <- shiny::reactiveValues(data = NULL)
 
-# read all CSVs into a named list
-asset_obj_list <- lapply(assets, read.csv)
-asset_obj_list <- lapply(asset_obj_list, janitor::clean_names)
+get_hi_df <- function() {
+  housing_index_df$data <- readRDS("housing_index_data.RDS")
+}
 
-names(asset_obj_list) <- tools::file_path_sans_ext(basename(assets))
+get_hi_df()
 
-asset_obj_list[[1]] %>% View()
+
 

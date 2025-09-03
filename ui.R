@@ -1,42 +1,21 @@
 # ui.R
-library(shiny)
-library(shinydashboard)
-
 dashboardPage(
-  dashboardHeader(title = "My Dashboard"),
+  dashboardHeader(title = "Zillow Housing Index"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Dashboard", tabName = "dashboard", icon = icon("tachometer-alt")),
-      menuItem("Plots", tabName = "plots", icon = icon("chart-line")),
-      menuItem("Data Table", tabName = "table", icon = icon("table"))
+      menuItem("Price Trends", tabName = "price_trends", icon = icon("chart-line"))
+    ),
+    selectizeInput(
+      "zip_filter", "Zip Code:",
+      choices = NULL, multiple = FALSE,
+      options = list(placeholder = "Start typing a ZIP/region…")
     )
   ),
   dashboardBody(
     tabItems(
-      # Dashboard tab
-      tabItem(tabName = "dashboard",
-              h2("Welcome to the Dashboard"),
-              p("Use the side menu to navigate.")
-      ),
-      
-      # Plots tab
-      tabItem(tabName = "plots",
-              fluidRow(
-                box(title = "Miles Per Gallon vs Horsepower", 
-                    status = "primary", solidHeader = TRUE, 
-                    collapsible = TRUE,
-                    plotOutput("mpgPlot"))
-              )
-      ),
-      
-      # Table tab
-      tabItem(tabName = "table",
-              fluidRow(
-                box(title = "Dataset", 
-                    status = "info", solidHeader = TRUE, 
-                    collapsible = TRUE,
-                    tableOutput("dataTable"))
-              )
+      tabItem(
+        tabName = "price_trends",
+        plotlyOutput("trend_plot", height = 450)
       )
     )
   )
